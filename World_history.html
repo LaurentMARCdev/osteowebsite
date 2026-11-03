@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.tailwindcss.com"></script> <!--Tailwind CSS-->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> <!--Alpine.js-->
+        <!-- React.js-->
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <header class="bg-white dar:bg-gray-900">
+        <div class="flex h-32 w-full items-center justify-center p-8">
+            <div class="grid h-full w-full grid-cols-8 grid-rows-3 gap-2">
+
+                <!-- Logo du site -->
+                <div class="col-span-1 row-span-3 rounded-3xl flex justify-center items-center"><a href="index.html"><img class="max-h-28 max-w-xs" src="asset/logoOS.png"></a> </div>
+                <div class="col-span-6 row-span-2  rounded-3xl flex justify-center items-center"> </div>
+                <!--Menu déroulant-->
+                <div 
+                x-data="{
+                    open: false,
+                    toggle() {
+                        this.open= this.open ? this.close(): true
+                    },
+                    close() {
+                        this.open = false
+                    }
+                }" 
+                @keydown.escape.prevent.stop="close()"
+                id="nav" class="col-span-1 row-span-3  rounded-3xl flex justify-center items-center" >
+                
+                    <!-- Bouton du menu-->
+                    <button @click="toggle()"
+                    class="text-white bg-orange-500 hover:bg-orange-900 focus:ring-2 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800" type="button">
+                        <svg id="i1" class="w-12 h-12 text-white font-bold stroke-current" viewBox="0 0 100 100">
+                            <path id="top-line-1"  stroke-linecap="round" stroke-width="6"  d="M30,37 L70,37 Z"></path>
+                            <path id="middle-line-1" stroke-linecap="round" stroke-width="6"	d="M30,50 L70,50 Z"></path>
+                            <path id="bottom-line-1" stroke-linecap="round" stroke-width="6"	d="M30,63 L70,63 Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Panneau du menu-->   
+                    <div 
+                    @click.outside="close()"
+                    x-show="open"
+                    style="display:none;"  
+                    class=" absolute right-2 top-20 z-20 bg-orange-500 divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+
+                        <ul class="hoverlist [&>li>a]:justify-end py-2 text-sm text-gray-700">
+                          <li>
+                            <a href="USA_history.html" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire de l'ostéopathie aux USA</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire de l'ostéopathie et de la thérapie manuelle dans le monde</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Figures historiques</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire du concept et de la philosophie</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Articles du site (Blog)</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Podcast Causons Ostéo sur Spotify</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Boutique du site</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <body class="bg-white justify-center items-center">
+        <div class="grid grid-cols-1 grid-rows-2" x-data="{tab:'Onglet4'}">
+            <div class="flex " >
+                <div class="w-[10%] lg:w-[20%]"></div>
+                <div class="grid grid-cols-8 grid-rows-5 rounded-3xl border-2 border-orange-500 bg-[url(asset/world_map.png)] bg-cover bg-center bg-no-repeat w-[80%] lg:w-[60%] lg:h-[440px] h-[190px] lg:gap-2">
+                    <!--Map Monde-->
+                    <div @click="tab= 'Onglet1'" id="NORTH AM" class="col-span-2 row-span-2  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button class="justify-self-stretch"><br><br>AMERIQUE<br>DU<br>NORD<br></button></div>
+                    <div @click="tab= 'Onglet4'" id="EURO" class="col-span-3 row-span-2  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button><br><br> <br>EUROPE</button></div>
+                    <div @click="tab= 'Onglet5'" id="ASIA" class="col-span-3 row-span-3 rounded-3xl  text-center text-xs lg:text-xl font-bold"><button><br><br><br><br>ASIE</button></div>
+                    <div @click="tab= 'Onglet2'" id="CENTRAL AM" class="col-span-3 row-span-1  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button><br>AMERIQUE CENTRALE</button></div>
+                    <div @click="tab= 'Onglet6'" id="AFRI" class="col-span-2 row-span-3  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button><br><br>AFRIQUE<br>&<br>MOYEN ORIENT</button></div>
+                    <div @click="tab= 'Onglet3'" id="SOUTH AM" class="col-span-3 row-span-2  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button><br><br>AMERIQUE DU SUD</button></div>
+                    <div @click="tab= 'Onglet7'" id="OCEA" class="col-span-3 row-span-2  rounded-3xl text-center text-middle text-xs lg:text-xl font-bold"><button><br><br>OCEANIE</button></div>
+                </div>
+                <div class="w-[10%] lg:w-[20%]"></div>
+            </div>
+            <div class="bg-gradient-to-b from-white to-orange-200 rounded-3xl p-2">
+                <div x-show="tab === 'Onglet1'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <div x-data="{tab:'AMN1'}"><br>   
+                        <div>
+                            <div class="grid h-full w-full grid-cols-1 sm:grid-cols-3 gap-2 lg:grid-cols-3 p-2">
+                                <button @click="tab= 'ANM1'" class="bg-orange-500 rounded-xl justify-center items-center p-2 hover:bg-red-600 hover:text-white" :class="{'bg-red-600': tab === 'Onglet1'}">Canada</button>
+                                <button @click="tab= 'ANM2'"  class="bg-orange-500 rounded-xl justify-center items-center p-2 hover:bg-red-600 hover:text-white" :class="{'bg-red-600': tab === 'Onglet2'}">USA</button>
+                                <button @click="tab= 'ANM3'"  class="bg-orange-500 rounded-xl justify-center items-center p-2 hover:bg-red-600 hover:text-white" :class="{'bg-red-600': tab === 'Onglet3'}">Mexique</button>
+                            </div>
+                        </div>
+                    <br>
+                    <div>
+                        <div x-show="tab === 'ANM1'" style="display:none;" class=" rounded-3xl p-2 border-orange-500  m-2 justify-center items-center object-center"><h1>L'histoire et le statut de l'ostéopathie au Canada</h1></div>
+                        <div x-show="tab === 'ANM2'" style="display:none;" class=" rounded-3xl p-2 border-orange-500  m-2 justify-center items-center object-center flex">
+                            <img class="w-[10%] h-[10%]" src="asset/still_chibi.png">
+                            <h1 class="">Pour plus d'informations, veuillez vous reporter à la partie dédiée <a href="USA_history.html" target="_parent">>ici<</a></h1>
+                            <br> 
+                            <p></p>
+                        </div>
+                        <div x-show="tab === 'ANM3'" style="display:none;" class=" rounded-3xl p-2 border-orange-500  m-2 justify-center items-center object-center">
+                            <h1 class="font-bold text-xl"><strong>L'histoire et le statut de l'ostéopathie au Mexique</strong></h1>
+                            <br>
+                            <p> Il existe actuellement plusieurs écoles au mexique:</p>
+                            <ul class="list-disc list-inside">
+                                <li><a href="https://www.eommexico.mx/">EOM México (Escuela de Osteopatía de Madrid)</a></li>
+                                <li><a href="https://escuelamexicanadeosteopatia.com/">ENMMO (Escuela Nacional Mexicana de Medicina Osteopatica)</a></li>
+                                <li><a href="https://esospam.com/">ESEOSPAM (Escuela de Osteopatia del Pacífico de México)</a></li>
+                            </ul>
+                            <p>Cela implique donc la présence d'ostéopathes en exercice au mexique</p>
+                            <br>
+                            <p>On trouve par exemple un cadre concernant la <a href="https://www.gob.mx/salud/acciones-y-programas/medicinas-complementarias-313623">chiropractie</a>. Il n'a pas été possible de trouver une loi précise encadrant l'exercice de l'ostéopathie mais on voit que de nombreux documents gourvernementaux y font référence.
+                                Notamment, on trouve un document de l'institut statistique et géographique pour les sécétariats de l'éducation mais aussi celui du travail qui classe l'ostéopathie dans la catégorie 715 "Terapia y rehabilitación" avec la chiropractie et la physiothérapie. 
+                                Comme dans beaucoup de pays, ceux qui pratiquent l'ostéopathie ont souvent <a href="https://mx.indeed.com/orientacion-profesional/como-encontrar-empleo/carrera-osteopatia"></a> un diplôme d'une autre profession de santé (Physiothérapeute ou Médecin par exemple).</p>
+                            <br>
+                            <p> À noter que dans l'article de Gougian & Berkowitz, on voit un lobbying des DOs Américains pour tacher de promouvoir un statut similaire à celui des Etats-Unis (c'est à dire une équivalence MD/DO). Ainsi, l'Institute of International
+                                Health at the Michigan State University College of Osteopathic Medicine (MSUCOM) a mis en place à Mérida, Yucatán, au Mexico une formation ains qu'une clinique et permis d'après les auteurs de faire reconnaître le statut des DOs pour la première fois dans un état méxicain (au travers du DOCARE qui est une organisation qui permet la pratique de soins à travers le monde). Si on suit l'ensemble de l'article, on voit que l'objectif est avant tout de faire reconnaître les droits des DO américains que de promouvoir une véritable profession dans les pays en question. À noter que
+                                ces derniers ont reçu un fin de non recevoir par de nombreux pays. Même l'AOA stipule sur son site que l'équivalence DO/MD n'est pas avérée au mexique. </p>
+                            <br>
+                            <p> Le mexique n'a pas d'institution membre de l'Osteopathic International Alliance et ainsi, il semble plus raisonnable de considérer une absence de cadre légal et probalement une présence comme un cursus complémentaire d'autres profession de santé et peut-être la présence de manière sporadique d'ostéopathe exclusif.</p>
+                            <h2 class="font-bold"> Sources</h2>
+                            <br>
+                            <ul class="text-xs">
+                                <li>Gougian, R. L., & Berkowitz, M. R. (2014). Gray zone: why a delayed acceptance of osteopathic medicine persists in the International community. Journal of Osteopathic Medicine, 114(10), 754-760.</li>
+                                <li>Indeed, La carrera de osteopatía, 20 juin 2024 : https://mx.indeed.com/orientacion-profesional/como-encontrar-empleo/carrera-osteopatia (consulté le 22/3/25)</li>
+                                <li>Instituto nacional de estadistica y geografia, Clasificacion Mexicana de programas de Estudios por Campos de Formacion Academica, superior y medio superior, 14 juillet 2011: https://www.google.com/url?client=internal-element-cse&cx=001009928181730403690:azhagrfyx8s&q=https://www.gob.mx/cms/uploads/attachment/file/643/Clasif_Prog_Est_21SEPT2011.pdf</li>
+                                <li>Site du gouvernement Mexicain : https://www.gob.mx/salud/acciones-y-programas/medicinas-complementarias-313623 (Consulté le 22/3/25) </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    </div> 
+                </div>
+                <div x-show="tab === 'Onglet2'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">2</div>
+                <div x-show="tab === 'Onglet3'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">3</div>
+                <div x-show="tab === 'Onglet4'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">4</div>
+                <div x-show="tab === 'Onglet5'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">5</div>
+                <div x-show="tab === 'Onglet6'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">6</div>
+                <div x-show="tab === 'Onglet7'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">7</div>
+                <!--Onglet par pays-->
+            </div>
+        </div>
+    </body>
+    <footer class="p-2">
+        <div class="p-1 col-span-4 row-span- bg-gradient-to-b from-yellow-400 to-red-600 rounded-3xl flex flex-row justify-evenly items-center sm:bg-gradient-to-r from-yellow-400 to-red-600">
+            <div>
+                <img class="h-24 transition-all duration-200 rounded-xl justify-center cursor-pointer hover:sepia gap-4" src="asset/podcast_CO.png">
+
+            </div>
+            <div class="text-white">
+                <ul>
+                    <li>Mentions Légales</li>
+                    <li>Nous contacter</li>
+                    <li>Conditions d'utilisation du site</li>
+                </ul>
+            </div>
+        </div>
+    </footer>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.tailwindcss.com"></script> <!--Tailwind CSS-->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> <!--Alpine.js-->
+        <!-- React.js-->
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <header class="bg-white dar:bg-gray-900">
+        <div class="flex h-32 w-full items-center justify-center p-8">
+            <div class="grid h-full w-full grid-cols-8 grid-rows-3 gap-2">
+
+                <!-- Logo du site -->
+                <div class="col-span-1 row-span-3 rounded-3xl flex justify-center items-center"><a href="index.html"><img class="max-h-28 max-w-xs" src="asset/logoOS.png"></a> </div>
+                <div class="col-span-6 row-span-2  rounded-3xl flex justify-center items-center"> </div>
+                <!--Menu déroulant-->
+                <div 
+                x-data="{
+                    open: false,
+                    toggle() {
+                        this.open= this.open ? this.close(): true
+                    },
+                    close() {
+                        this.open = false
+                    }
+                }" 
+                @keydown.escape.prevent.stop="close()"
+                id="nav" class="col-span-1 row-span-3  rounded-3xl flex justify-center items-center" >
+                
+                    <!-- Bouton du menu-->
+                    <button @click="toggle()"
+                    class="text-white bg-orange-500 hover:bg-orange-900 focus:ring-2 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800" type="button">
+                        <svg id="i1" class="w-12 h-12 text-white font-bold stroke-current" viewBox="0 0 100 100">
+                            <path id="top-line-1"  stroke-linecap="round" stroke-width="6"  d="M30,37 L70,37 Z"></path>
+                            <path id="middle-line-1" stroke-linecap="round" stroke-width="6"	d="M30,50 L70,50 Z"></path>
+                            <path id="bottom-line-1" stroke-linecap="round" stroke-width="6"	d="M30,63 L70,63 Z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Panneau du menu-->   
+                    <div 
+                    @click.outside="close()"
+                    x-show="open"
+                    style="display:none;"  
+                    class=" absolute right-2 top-20 z-20 bg-orange-500 divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+
+                        <ul class="hoverlist [&>li>a]:justify-end py-2 text-sm text-gray-700">
+                          <li>
+                            <a href="USA_history.html" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire de l'ostéopathie aux USA</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire de l'ostéopathie et de la thérapie manuelle dans le monde</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Figures historiques</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Histoire du concept et de la philosophie</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Articles du site (Blog)</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Podcast Causons Ostéo sur Spotify</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block px-4 py-2 bg-orange-500 hover:bg-red-600 hover:text-white hover:font-bold">Boutique du site</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <body class="bg-white justify-center items-center">
+        <!--Carousel des bustes des personnes-->
+        <div x-data="{tab:'Onglet4'}" class="grid grid-cols-1 grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 lg:grid-cols-2 lg:grid-rows-1">
+            <div  class="z-20 bg-gradient-to-r from-yellow-400 to-red-500 gap-2 m-2 rounded-3xl display-flex justify-center align-center h-[500px] relative overflow-hidden w-62">
+                <p class="text-center text-xl font-bold text-white"> CHOISISSEZ ET CLIQUEZ SUR UN PERSONNAGE</p>
+                <div class="slider">
+                <div class="item">
+                    <div class="">
+                        <button @click="tab= 'Onglet1'"> <img class="rounded-xl"  src="figures/figh1.png"> </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet2'"> <img class="rounded-xl" src="figures/figh2.png"> </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet3'"> <img class="rounded-xl" src="figures/figh3.png"> </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet4'"><img class="rounded-xl" src="figures/figh4.png"> </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet5'"><img class="rounded-xl" src="figures/figh5.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet6'"><img class="rounded-xl" src="figures/figh6.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet7'"><img class="rounded-xl" src="figures/figh7.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet8'"><img class="rounded-xl" src="figures/figh8.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet9'"><img class="rounded-xl" src="figures/figh9.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet10'"><img class="rounded-xl" src="figures/figh10.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet11'"><img class="rounded-xl" src="figures/figh11.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet12'"><img class="rounded-xl" src="figures/figh12.png"></button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <button @click="tab= 'Onglet13'"><img class="rounded-xl" src="figures/figh13.png"></button>
+                    </div>
+                </div>
+                <button id="next" class="absolute top-[40%] text-white text-xl font-bold right-[50px]">>></button>
+                <button id="prev" class="absolute top-[40%] text-white text-xl font-bold left-[50px]"><<</button>
+            </div>
+            </div>
+        <!--Fiche biographique en rapport avec le personnage en question-->
+            <div class="h-[500px] text-wrap">
+                <div x-show="tab === 'Onglet1'" style="display:none;"  class="rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p><strong>Andrew Taylor Still</strong> est né le 6 août 1828 à Jonesville, en Virginie aux Etats-Unis d’amérique, état de la côte Est. À l’époque, les Etats-Unis ne sont pas l’état que l’on connait, ils ne comptent que 19 états et n’a pas absorbé l’énorme territoire à l’Ouest acheté à la France 27 ans plus tôt.
+                        Il est le fils d’Abram Still, un médecin et précheur protestant méthodiste  et d’Martha Poage Moore Still. Ce courant du méthodisme est issu d’un schisme avec l’église anglicane protestante au XVIIIème siècle, plutôt hostile à tout dogme, insistant sur le libre choix de l’homme, mais aussi du sacré dans le quotidien des fidèles. Aux USA, ce courant religieux était abolitionniste depuis 1770, bien que certains membres du courant voulurent ne plus participer à ce mouvement anti-esclavage autour de 1830.
+                        Il se marie avec sa femme Mary Margaret Vaughn en janvier 1949. Ils auront ensemble une première fille Marusha en décembre de la même année. 
+                        Lui aussi se forme à la médecine à partir de 1948, voyant que l’agriculture et l’enseignement ne payaient pas assez. Il aide aussi et apprend auprès de son père qui a été assigné à la mission Shawnees. Il apprendra auprès d’eux aussi beaucoup de choses sur les plantes médicinales, et sur la réduction de luxation mais il constatera aussi la difficulté de soigner de nombreuses maladies (grippe, pneumonie, certaines fièvres ou choléra) avec les moyens thérapeutiques de l’époque et dont l’issu est bien souvent la mort. 
+                        Il sera aussi autorisé à étudier l’anatomie sur les corps des Indiens Shawnees décédés.</p>
+                    <br>
+                    <p>
+                        AT Still prendra part en 1854 à la lutte contre les « Borders Ruffians » une milice pro-esclavagiste provenant du Missouri voisin qui espère faire basculer le Kansas de leur côté. Ce sont les prémisses de la future guerre de sécession.
+                        Il faut comprendre que les écoles de médecines de l’époque dans ces territoires n’ont pas un enseignement standardisé et la formation se fait aussi auprès de médecin installé et que la qualité de formation est variable quand celle-ci ne se fait pas sur le terrain au cours de guerre. Le résultat est aussi une grande variété de pratique avec une efficacité discutable. Il commence dès cette époque à expérimenter la médecine différemment des standards de l’époque dans le middle-west. Il étudiera l’anatomie et commencera à pratique le bone setting et la thérapie manuelle (ce qu’on pourrait rapprocher du reboutement chez nous). Le fait de soigner ainsi avec ses mains, lui causera des problèmes avec le prédicateur méthodiste de sa communauté.
+                        </p>
+                    <br>
+                    <p>Il prendra aussi des responsabilités politiques, et participera à la création d’une école méthodiste.
+                        Il perdra coup sur coup en 1859, son dernier fils Son Lorenzo (mort 6 jours après sa naissance) et sa première femme Mary un mois plus tard. Il se retrouve alors seul avec ses enfants jusqu’à son second mariage avec Mary Elvira Turner en 1860.
+                        En 1861 commence la guerre de Sécession et AT Still est envoyé dans l’armée de l’Union (du nord, anti-esclavagiste) en tant médecin militaire. Il constate que certaines préparation médicinale ont un effet limité et sont même parfois délétère pour les patients. 
+                        </p>
+                    <br>
+                    <p>
+                        Il semble d’après Jason Haxton que ce dernier ait lu les travaux de Virshow à propose des cellules, ceux de Lister sur l’antisepsie, et enfin ceux de Darwin sur l’adaptation d’une espèces à son environnement. Il a suivi quelques cours à l’école de Médecine de Kansas city, mais est déçu par le manque de pratique et de clinique de cette dernière. 
+                        Il s’intéresse aussi à la diététique, mais aussi à des courants plus ésotériques comme le spiritisme, l’hypnose, le magnétisme et l’électricité dans le soin.
+                        Il reste encore discret sur ses réflexions à propos de tout ça et il a 3 nouveaux enfants avec Mary : Charles (1865), Herman et Harry (1867).
+                    </p>
+                    <br>
+                    <p>Il est aussi fasciné par l’ingénierie et les machines. Il développe par ailleurs une vision très mécaniste du corps humain tout en ayant malgré tout une vision profondément vitaliste  de la personne humaine (issue davantage de ses convictions religieuses).
+                        Il commence alors à faire de la thérapie manuelle, et gagne une certaines expertises dans la réduction de fractures et de luxations. Il se garde pourtant encore de parler d’une possible action dans le cadre d’autres maladies et infections. 
+                        En 1874, il retourne dans le Missouri à Macon, où son frère exerce en tant que médecin. Il espère pouvoir avoir son soutien pour développer sa méthode. Cependant, un prédicateur de son ancien lieu de résidence écrit au prédicateur de Macon pour dire que le nouveau docteur arrivé en ville serait un lien avec le démon , ce qui l’oblige à déménager pour Kirksville. Dès lors, pour les 18 prochaines années cette ville sera son nouveau foyer. Il continuera de pratiquer la médecine manuelle de manière itinérante dans le nord-est du Missouri. 
+                        </p>
+                    <br>
+                    <p>C’est là que commence la légende et les récits extraordinaires de soins que ce dernier aurait prodigués. Vu qu’il s’agit de témoignages rapportés par Still entre autres, difficile de faire la part des choses.
+                        Il enseigne de manière occasionnelle sa méthode à ses patients contre quelques centaines de dollars ? Sa rencontre avec le Dr William Smith va le pousser à co-fonder son école avec lui. C’est ainsi que l’American School of Osteoapthy voit le jour en 1892. Smith va alors enseigner avec Still. Still y formera dans sa première promotion quatre de ses enfants. Puis ces derniers l’aideront dans le développement de l’école. 
+                        Ses élèves commenceront alors dans les années qui suivent à fonder des écoles dans les états proches (Dans le Middle West et la région des Grands Lacs), et moins proches (Californie et côte est des Etats-Unis).
+                        L’école se dotera d’un centre de soin par la suite. Néanmoins, les diplômés ne peuvent pas pratiquer la médecine légalement. Vers 1897, finalement, les ostéopathes obtiennent un droit d’exercice. Cependant, still délivrera des DOs et non des MDs, tenant à se distinguer de la médecine traditionnelle. 
+                        </p>
+                    <br>
+                    <p>À partir des années 1900, Still commence à se retirer de l’enseignement, il a 72 ans (!). 
+                        On peut voir que la plupart des ouvrages de Still sortent dans la période de multiplication des écoles. Doit-on y voir là un moyen pour lui d’essayer de ne pas laisser échapper sa création et d’imprimer sa vision de la profession ? C’est une des réponses possibles. 
+                        </p>
+                    <br>
+                    <p>On peut le déduire du conflit qui opposa la National School of Osteopathy à Kansas City, et l’American School of Osteopathy de Kirksville. La première fondée en 1985 par ED Barber fut en conflit judiciaire avec la seconde. ED Baber va publier sa vision de l’ostéopathie, le premier en 1896 (un an avant Still), Osteopathy : the new science of healing, et Osteopathy Complete en 1898. Ce dernier ne se prive pas de critiquer Still, tout en vendant ses diplômes sans que les étudiants ne suivent le cursus. Celle-ci finira par fermer en 1900 après avoir été refusé par l’AACOM au vu de l’insuffisance d’enseignement de l’école (Jordan L, 2014). On trouve même quelques articles à charge dans le Journal of Osteopathy (édité par l’ASO) tandis que Barber lui répond dans l’Osteopathic Physician. 
+                        En 1914, AT STill fait une attaque (AVC) qui le laisse diminué. Deux autres suivront au cours des années qui suivirent et il décède le 12 décembre 1917.
+                        </p>
+                    <br>
+                    <div class="grid grid-cols-2 grid-rows-2">
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/WYAQlQbolic?si=HQLvVC-_2drxskAl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/YDMT7Rbo0wY?si=oNlfjPWpql3BNKxW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/axZ1nbn1oqs?si=lkJ5QLX-ZSRXrFfq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/XP_TN5_JXCc?si=46_tcfuhyDAPPve9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <h2 class="font-bold">Les principales influences d’AT Still </h2>
+                    <br>
+                    <h3 class="italic">L’église méthodiste :</h3>
+                    <br>
+                    <p>Il participe aussi à promouvoir un amélioration des conditions de vies des plus pauvres. Son credo est des médications simples et naturelles, foi et prière. Il est opposé à l’esclavage. 
+                        AT Still est un théiste, il est croyant mais pas de la manière dont les méthodistes le sont. En revanche, sa manière de l’écrire montre une tendance plus créationniste.
+                        </p>
+                    <br>
+                    <h3 class="italic">La proximité avec la frontière :</h3>
+                    <br>
+                    <p>Pour lui, la Nature est parfaite dans sa forme. Cette conviction vient de sa vie dans les grands espaces du Missouri du Nord pendant son enfance ( il fallait bien s’occuper pendant que son père parcourait le pays en tant que prédicateur). Cette vision des choses est à rapprocher de sa vision du divin aussi parfaite (qui est l’opposé de celle des Méthodistes). C’est une vision en partie proche de celle des Shawnees.</p>
+                    <br>
+                    <h3 class="italic">La mécanique :</h3>
+                    <br>
+                    <p>Depuis son enfance, il est passionné par la mécanique. Vers la fin des années 1860, il mettra au point une moissonneuse et un machine pour baratter le lait.  Pour lui le corps humain est une mécanique parfaite dont l’ostéopathe est le mécanicien ou l’ingénieur.</p>
+                    <br>
+                    <h3 class="italic">Le vécu avec les médicaments :</h3>
+                    <br>
+                    <p>Il a eu maille à partir avec la médication de l’époque. Un traitement lui fit perdre ses dents en partie à 14 ans qu’il a dut composer avec un appareil partiel. Il est opposé aux vaccins.  </p>
+                    <br>
+                    <h3 class="italic">Les shawnees :</h3>
+                    <br>
+                    <p>Après son mariage avec sa première épouse, il va rejoindre son père dans les territoires shawnees (envoyé là à la suite de ses positions anti-esclavagiste qui ne plaisaient pas au Missouri). Il observe les traitements pratiqués par les amérindiens. Il ne considère pas forcément meilleurs que ceux employé de son côté. Il s’applique à les soigné avec les médications classique et en soigne un certain nombre. Il apprend leur langue. 
+                        Il apprend aussi l’anatomie sur les corps des défunts.
+                        </p>
+                    <br>
+                    <h3 class="italic">La perte de ses proches :</h3>
+                    <br>
+                    <p>En 1864, au retour de la guerre de Sécession, une épidémie de méningite cérébrospinale emporte son fils Abram (12 ans), et ses filles Susan (11 ans), Marcia one (1 ans) ainsi qu’une jeune fille adoptée. Son impuissance et celle de la médecine à sauver ses enfants ont provoqué une profonde remise en question. </p>
+                    <p>Il perdra son père 3 ans plus tard en 1867. 
+                        À noter qu’il avait déjà perdu en 1859, son fils nouveau-né suivit de sa femme en un peu plus d’un mois.
+                        Ce sont ces évènements qui l’éloignent du méthodisme et de la médecine classique.
+                        </p>
+                    <br>
+                    <h3 class="italic">La franc-maçonnerie :</h3>
+                    <br>
+                    <p>Il a été initié en 1868 à la loge Palmyra n°23 du Kansas.
+                        Leur fonctionnement à cette époque est différent de celle des loges Européennes même si elles héritent leur rite de ces dernières. Il n’y a pas de grande loge nationale mais une par état qui régissent les autres de l’état. Il existe une ségrégation aux sein de celles-ci entre blancs et noirs.
+                        On a assez peu d’infos. Celui-ci est devenu maitre de la loge en l’espace de quelques mois. Il semble que ses théories ne furent pas très bienvenues au sein de celle-ci. 
+                    </p>
+                    <p>Il ne fréquenta pas les loges du Missouri (Il existe une loge à Kirskville depuis 1850). 
+                        Il semble que cette influence se retrouve dans les notions de Grand Architecte ou théisme.
+                    </p>
+                    <br>
+                    <h3 class="italic">Le mesmérisme :</h3>
+                    <br>
+                    <p>Cela vient de Franz-Anton Mesmer, une personne ayant développé des théories sur le « magnétisme animal » qui pourrait avoir des applications thérapeutiques. C’est le principe de fonctionnement des magnétiseurs.
+                        AT Still rejette en bloc tout lien avec ces pratiques.
+                        Notons toutefois qu'il a pourtant exercé un temps comme magnetic healer.
+                    </p>
+                    <br>
+                    <h3 class="italic">Homéopathie/Eclectisme :</h3>
+                    <br>
+                    <p>Cela vient de Samuel Hahnemann, un médecin ayant de développé des théorie sur le lien entre le mal et son remède, sur la dilution du germe à des doses infinitésimales, etc… L’éclectisme fondé par Wooster Beach, est un mélange de médecine amérindienne avec les connaissances médicales occidentales de l’époque.
+                        AT Still rejette en bloc tout lien avec ces pratiques, il n’y voit qu’une sorte de médicament plus ou moins déguisé. 
+                    </p>
+                    <br>
+                    <h3 class="italic"> Le Darwinisme :</h3>
+                    <br>
+                    <p>Cette théorie de l’évolution ou de l’adaptation à son milieu et de la survie des individus les plus adaptées par Charles Darwin était connu de Still et on en retrouve quelques traces dans les écrits de Still. 
+                        Cette vision est en opposition avec les idées vitalistes et créationniste d’Andrew Taylor Still. 
+                    </p>
+                    <br>
+                    <h3 class="italic">Le vitalisme :</h3>
+                    <br>
+                    <p>C’est un courant qui voit en tout chose vivant un principe vital non réductible et essentiel au vivant (C’est elle qui donne la théorie de génération spontanée par ex). Still n’y fait jamais référence pourtant ses textes en évoque l’idée en différent terme.</p>
+                    <br>
+                    <h2 class="font-bold">En résumé </h2>
+                    <br>
+                    <p>Pour terminer sur Andrew Taylor Still, il faut comprendre que dans son parcours, l’absence d’efficacité de la médecine héroïque l’a amené à s’écarter en partie de la médecine au sens large, privilégiant un approche plus empirique, plus mécaniste et se basant sur des choses qui lui semblait plus tangible comme l’anatomie. Il continua aussi d’employer des mélanges d’herbes médicinales, mais aussi des moyens mécaniques comme des paires de semelles.
+                        Cela l’a conduit à partir d’un certain point à être en opposition avec les avancées de la médecine, ce qui a entrainé un conflit avec certains de ses proches mais aussi des enseignants de son école. 
+                        </p>
+                    <br>
+                    <p>Les mentions régulières à la religion dans son écriture, peuvent sembler incongrues (surtout pour nous, européen et français, beaucoup moins croyants et/ou pratiquants en général que les Américains, même aujourd’hui), mais la religion notamment protestantes n’est pas rare dans les textes pour l’époque et celle-ci jouait un rôle central dans la vie des Américains de l’époque, et ce, malgré le fait que le premier amendement de la constitution des USA sépare état et religions.  Il faut donc comprendre ça dans ce contexte particulier. De plus, son éducation auprès d’un père pasteur n’est sans doute pas étranger à ce style d’écriture proche du sermon. Enfin, AT Still, n’a pas fait d’études, il n’a donc pas un style d’écriture tel qu’on peut le trouver chez ceux qui ont suivi un cursus universitaire (comme JM Littlejohn). On peut noter néanmoins qu’il s’est éloigné que l’église méthodiste. </p>
+                    <br>
+                    <p>Il faut enfin voir que les dates de publication de ses livres coïncident avec la période où les écoles se multiplient dans le pays et où il commence à être mis de côté à l’ASO, ce qui peut laisser penser qu’il s’agit d’une manière pour lui d’essayer de reprendre la main sur le développement de la jeune profession, d’y laisser sa marque avant que tout ne lui échappe. 
+                        Il est à noter un détail important dans les écrits d’AT Still. Contrairement à JM Litllejohn, celui-ci ne source pas ses écrits et deviner l’origine et support de sa réflexion revient à faire un jeu de piste en comparant à d’autres ouvrages pour deviner ses influences. Il n’est pas impossible que certains aspects de sa pratique trouvent sa source dans des textes similaires à ceux d’autres thérapies manuelles.
+                        </p>
+                    <br>
+                    <h2 class="font-bold"> Vidéos et Podcasts intéressants:</h2>
+                    <br>
+                    <div class="grid grid-cols-2">
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/uQl8ryfB29w?si=KmVIC32tdKiNsNQQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/Hk3OPR7O344?si=e-FeSHwOswAOz_mj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <h2 class="font-bold"> Sources </h2>
+                    <ul class="text-xs">
+                        <li>Brown RD, Knowledge is Power: the diffusion of information in early America, 1700-1865, Oxford University Press, 1989, 1st edition, 390p</li>
+                        <li>Comeaux, Z. Incendie sur la prairie : Andrew Taylor Still et le rayonnement de l'ostéopathie, 2018. Belgique: Tita.</li>
+                        <li>Duren C, Lepers Y, Contexte historique et courants de pensée ayant pu influencer l’œuvre d’Andrew Taylor Still, Apostill n° 19, 2008, 5-11.</li>
+                        <li>Duren C, Lepers Y, Contexte historique et courants de pensée ayant pu influencer l’œuvre d’Andrew Taylor Still, Apostill n°20, 2009, 5-12.</li>
+                        <li>Gevitz N, The DOs Osteopathic Medicine in America, 2ème edition, The Johns Hopkins University Press, 2002.</li>
+                        <li>Gevitz, N. (1988). Andrew Taylor Still and the social origins of osteopathy. In Studies in the history of alternative medicine (pp. 155-170). London: Palgrave Macmillan UK.</li>
+                        <li>Hamonet, C. (2003). Andrew Taylor Still and the birth of osteopathy (Baldwin, Kansas, USA, 1855). Joint Bone Spine, 70(1), 80-84.</li>
+                        <li>Haxton J, Andrew Taylor Still, Father of Osteopathic Medecine, Truman State University Press: Kirksville, 2016, 1ère edition, 48 pages.</li>
+                        <li>Inkster, I. The Scientific Enterprise: Institutions and the Diffusion of Knowledge in the Nineteenth Century. Science and Technology in History, 1991, 89–130.</li>
+                        <li>Jordan l, Battling a Diploma Mill: the early fight to preserve the osteopathic principles of AT Still, JAOA, 2014, 114(9):722-726.</li>
+                        <li>Plongeron B, Religion et nationalisme aux Etats-Unis au cours de l’indépendance, Annales historiques de la Revolution française, 1982, 249 : 416-439.</li>
+                        <li>Rosenfeld M, L’état et la religion, Annuaire international de justice constitutionnelle, 2001, 16-2000 : 458-489.</li>
+                        <li>Still, A. T. (1899). Philosophy of osteopathy. Academy of Applied Osteopathy.</li>
+                        <li>Still, A. T. (1902). The philosophy and mechanical principles of osteopathy. Hudson-Kimberly Publishing Company.</li>
+                        <li>Still, A. T. (1908). Autobiography of Andrew T. Still. The author.</li>
+                        <li>Still, A. T. (1910). Osteopathy, research and practice. Still.</li>
+                        <li>WolfeRM, Sharp LK, Anti-vaccinationists past and present, BMJ, 2002, 325(7361): 430-432.</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet2'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p>Initialement, <strong> William Garner Sutherland</strong> est un journaliste issu du Middle West. Il ne se destine pas au domaine médical.
+                        Il travaille au « The Mapletown Entreprise » à partir de 1891, qui est un journal hebdomadaire publié entre 1884 et 1898. En 1893, il reprend des études à l’Upper Iowa University qu’il ne termine pas.
+                        En 1895, il poursuit sa carrière journalistique au « Austin Daily Herald ». C’est là-bas qu’il entend parler pour la première fois d’Andrew Taylor Still. 
+                        Il discute d’ostéopathie d’abord à Austin avec deux connaissances dont le Dr Charles Still. 
+                        Ce n’est qu’en 1898 qu’il commence ses études à l’ASO. Il en sortira diplômé en 1900.
+                        </p>
+                    <br>
+                    <p>
+                        Au cours de ses études, en étudiant un crâne éclaté et la forme bizeautée des sutures, il s’interroge sur la possibilité que ces dernières permettent une certaine mobilité.
+                        Pour le moment, il s’installe en tant qu’ostéopathe à Mankato dans le Minnesota. En 1907, il devient président du « Minnesota State Osteopathic Association » et publie quelques chroniques à propos de la santé dans le « Minneapolis Journal ».
+                        Il poursuit en parallèle ses recherches sur l’anatomie du crâne. Il met aussi au point des dispositifs pour compresser ses sutures crâniennes et voir ce que cela induit sur lui vers 1924.                    </p>
+                    <br>
+                    <p>
+                        Lors d’une expérience, après avoir relâché la pression autours de son crâne, il a senti comme une sensation de chaleur et comme si un fluide circulait. Il a ressenti aussi comme un mouvement dans le sacrum et en déduit que les deux fonctionnent probablement de pair. 
+                        Il commence à publier dans le journal « The Northwest Bulletin », la publication du « Minnesota State Osteopathic Association » à propos de ses théories mais sous le pseudonyme « Blunt Bone Bill » (Bec osseux émoussé).
+                    </p>
+                    <br>
+                    <p>
+                        Cet article provoque quelques réactions et il commence à entretenir une correspondance à propos de ces idées et de premiers cas cliniques utilisant cette approche au niveau du crâne. Il tentera a priori de publier sous un autre pseudonyme dans un autre journal professionnel (The Osteopathic profession) en 1934.
+                        En 1939, il publie un premier ouvrage sur le sujet, « The Cranial Bowl » et commence à montrer ses théories et ses techniques lors de formations postgrad à l’école de Des Moines (l’Iowa est l’état voisin du Minnesota où il exerce).
+                        Deux des ostéopathes qu’il a formés vont publier en 1943, un livre sur ses techniques : A Manual of Cranial Technique ».
+                        En 1946, Osteopathic Cranial Association est fondée.</p>
+                    <br>
+                    <p>
+                        WGS a reçu ensuite de nombreuses récompenses de la part d’associations et école américaines en ostéopathie en 1949 et 1950.
+                        En 1951, c’est un autre collègue, Harold Magoun qui publie un ouvrage sur les théories et technique sur le crâne. 
+                        WGS va déménager sur la côte ouest des USA en Californie. En 1953, il crée sa propre fondation « The Sutherland Cranial Teaching Foundation» là-bas. Celle-ci existe toujours aujourd’hui. 
+                        Il décède un an plus tard en septembre 1954.
+                    </p>
+                    <br>
+                    <h2 class="font-bold">Les écrits de WGS</h2>
+                    <br>
+                    <p>Une partie de ses cours ont été traduits et compilés dans le livre suivant (Teaching in the science of Osteopathy).Une autre partie est théoriquement dans l’ouvrage d’Harold Magoun, mais il s’agit d’une source secondaire, il n’est donc pas impossible qu’il ne soit pas totalement fiable.
+                        Ses principaux ouvrages sont le Cranial Bowl publié en 1939 et Contributions of Tought en 1967, et Teaching in the science of Osteopathy en 1990 (publié à titre posthume).
+                        Il est considéré comme le père de l’ostéopathie crânienne.
+                        Comme on a pu le voir, ses théories n’ont pas forcément été adoptées rapidement et surtout par tous les ostéopathes. C’est d’ailleurs probablement pour ça qu’il n’a pas publié au départ sous son vrai nom.  Ce n’est que petit à petit que cette approche a fait son chemin au sein de la formation des ostéopathes. 
+                        </p>
+                    <br>
+                    <h2 class="font-bold"> Vidéos et Podcasts sur le sujet</h2>
+                    <div class="grid grid-cols-2 gap-2">
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/MfkFZJsS1Tg?si=OTuQAOPZfPRUupLF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/PmkWKjYnlio?si=XhG053L49997zRDy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <h2 class="font-bold">Sources</h2>
+                    <ul class="text-xs">
+                        <li>Stark, J. E. (2020). Journeyman: William Garner Sutherland, the Formative Years (1873-1900). Roe House Press.</li>
+                        <li>Sutherland, W. G. (2002) Enseignements dans la science de l’ostéopathie, Sutherland Cranial Teaching Foundation, 311 p.</li>
+                        <li>Sutherland, W.G.(1944) the Cranial Bowl, The western Osteopath</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet3'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p><strong>Louisa Burns</strong> (1870-1958) est la première chercheuse en ostéopathie. Elle est née dans l’Indiana en 1869. Elle obtient d’abord un Bachelor of science en 1892 et devient enseignante. Sa carrière sera vite interrompue par une méningite. Elle en gardera des séquelles et trouvera du soulagement par des traitements ostéopathiques. 
+                        Elle a ensuite été formée par la Pacific College of Osteopathy, en Californie en 1904. Elle sera en parallèle de ses études, récompensée par des travaux sur la biologie des moisissures. Elle prendra ensuite la charge de l’enseignement de physiologie pendant 10 ans tout en débutant ses premières recherches sur l’ostéopathie. Elle publiera son premier ouvrage, Basic Principles, en 1907.
+                    </p>
+                    <p>
+                        Elle intègrera rapidement l’A.T. Still Research Institute à Chicago, jusqu’à obtenir une position d’associée à plein temps en 1914, puis doyenne en 1916 et ce, pendant 20 ans. En Parallèle, elle reviendra en Californie pour devenir aussi directrice du Sunny Slope Laboratory branche de l’A.T. Still Research Institute.
+                    </p>
+                    <p>
+                        Elle consacrera son temps à étudier et définir la dysfonction somatique (appelée à l’époque lésion ostéopathique) sur des lapins en induisant des « lésions ostéopathiques » en maintenant des appuis latéraux sur les épineuses des vertèbres (Figure 2.g). Puis, après avoir induit ce stress en poussant de manière opposée les épineuses de deux vertèbres adjacentes, elle étudie l’effet sur le fonctionnement des organes innervés par cet étage vertébral avant d’étudier les tissus par histologie.
+                    </p>
+                    <br>
+                    <iframe width="280" height="157" src="https://www.youtube.com/embed/VXc1G3y5WSk?si=ru0cj-X8eyhcERdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br>
+                    <p class="text-xs"> Vous trouverez au-dessus une vidéo présentant une partie des travaux de Louisa Burns (Le contenu n'est disponible que sur YouTube: <a class="text-red-800" href="https://www.youtube.com/watch?v=VXc1G3y5WSk&t=734s" target="_blank">ici</a>)</p>
+                    <br>
+                    <p>
+                        Elle publiera par la suite 4 ouvrages entre 1907 et 1931. Certains sont avant tout des ouvrages de physiologie cellulaire qui font la synthèse de connaissance de l’époque. De plus son travail n’est pas exempt de critique (Reinsch et al, 2009) les rapports de recherches manquent parfois de détails (nombre de sujet, répartition des sujets, etc…) ce qui amoindri la portée de son travail. La synthèse de ses travaux sur la « lésion osteopathique » est disponible dans le livre « Pathogenesis of Visceral Disease following Vertebral Lesions » publié en 1948.
+                    </p>
+                    <p>
+                        Elle est également à l’origine de nombreuses publications au sein de nombreuses revues de l’ostéopathie (Journal of the American Osteopathic Association, The Osteopathic Truth, The Journal of Osteopathy, par exemple). Elle traite de nombreux sujet : pathologie et diagnostic différentiel, enseignement de la palpation, etc.
+                    </p>
+                    <p>
+                        De plus, l’A.T. Still Research Institute est également un éditeur de nombreux ouvrages dans le domaine de l’ostéopathie. Elle participe donc tout autant à la diffusion des connaissances au sein de la profession. 
+                        Une conférence annuelle organisée par l’AOA portant son nom met à l’honneur les travaux de recherche dans le domaine de l’ostéopathie.</p>
+                    <br>
+                    <h2 class="font-bold"> Sources</h2>
+                    <ul class="text-xs">
+                        <li>Burns,L. (1948). Pathogenesis of Visceral Disease Following Vertebral Lesions. États-Unis: American Osteopathic Association.</li>
+                        <li>Burns, L. (1931). Studies in the osteopathic sciences. Volume IV, The Cell of Blood, Montfort & Co.</li>
+                        <li>Burns, L. (1917). Further Contributions to the Study of the Effects of Lumbar Lesions, A. T. Still Research Institute</li>
+                        <li>Burns, L. (1911). Studies in the osteopathic sciences. Volume III, The physiology of consciousness, Montfort & Co.</li>
+                        <li>Burns, L. (1911). Studies in the osteopathic sciences.Volume II, The Nerve Center, Montfort & Co.</li>
+                        <li>Burns, L. (1907). Studies in the osteopathic sciences.Volume I, Basic Principles, Monfort & Co. </li>
+                        <li>Burns, L. (1907) Viscero-Somatic and somato-visceral spinal reflexes, JAOA, 17(2): 51-60.</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet4'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                <h2 class="font-bold">Son parcours</h2>
+                <br>
+                <p><strong>John Martin Littlejohn </strong> (ou JML), né 1865 à Glasgow. Issu d’une famille plutôt nombreuse, il est le second de la fraterie (après son frère William, et avant James, Elizabeth et David) si on ne compte que les enfants ayant atteint l’âge adulte. À l’époque, la mortalité infantile est très importante et les parents de JML ont déjà 2 enfants en bas âge avant JML ce qui fait en réalité de lui, le 4ème né de la famille. 
+                C’est une famille désargentée. Pour autant, JML sera un très bon élève et suivra des études universitaire malgré tout avec un cursus en lettre classique, science et métaphysique. Il passera également un Bachelor de Droit. Il suit aussi des études religieuses. C’est un peu un boulémique des études, il commence de nombreux cursus mais ne les finit pas toujours.
+                Mais c’est une période particulière où une grande vague d’émigration des Écossais et des Anglais (153 000 iront tenter leur chance sur le nouveau continent) pour conjurer la pauvreté importante au Royaume Uni. C’est peut-être ce qui poussera la fratrie à suivre son frère William aux USA.</p>
+                <br>
+                <p>Ils finissent par obtenir un MD. Tout en essayant d’améliorer le cursus proposé dans l’école de Chicago entre 1905 et 1909. JML devient enseignant en Physiologie dans une école d’homéopathe en parallèle et James prend aussi la tête de la future AACOM. 
+                    En 1910, il n’arrive à obtenir une équivalence avec le MD pour les DO, et le rapport Flexner n’est pas tendre avec l’école des Littlejohn. D’un autre côté, l’AOA (l’association américaine des Ostéopathes) menace de retirer son soutien si l’école pousse plus vers les matières médicales notamment lié au médicament (de la même manière qu’elle avait aussi ménacée le Pacific College of Osteopathy). </p>
+                <br>
+                <p>La vision de John Martin Littlejohn de la « lésion ostéopathique » plus large que celle communément admise le met en porte à faux avec le reste de la profession. 
+                    Les frères Littlejohn vendent leurs parts de leur école à un groupe d’ostéopathe. Ces dernier renomme l’école et James et John se portent candidat pour être Doyen. C’est James qui devient Doyen, John le vit mal et part avec femme et enfants pour l’Angleterre.
+                    Il exercera en tant qu’ostéopathe dans la région londonienne et fondera en 1917, la British School of Osteopathy (BSO) en 1917 à Londres.</p>
+                <br>
+                <p>Il en prendra la tête en tant que Doyen jusqu’en 1947. Il sera aussi président de la British Osteopathic Association (BOA) entre 1925 et 1926.
+                    L’école reçoit un retour favorable de la BOA suite à une inspection. La BOA veut prendre la gestion de l’école. JML quitte la tête de la BOA et les anciens diplômés de la BSO fondent alors une association professionnelle concurrente, l’Association of British Osteopaths (ABO) en 1926. Celle-ci fusionnera avec l’Incorporated Association of Osteopaths (IAO) en 1929 pour former la plus grande association d’ostéopathe Anglais.</p>
+                <br>
+                <p>En 1934, c’est le moment du projet de loi « osteopaths Bill » pour faire reconnaitre la profession. JML témoigne devant un comité en faveur de la profession mais son témoignage porte davantage préjudice au projet qu’autre chose (On parle parfois de la « Littlejohn debacle »). 
+                    La British Medical Association ne voit pas d’un bon œil ce processus et fait tout son possible pour s’y opposer. Du fait de ces mauvais témoignages mais aussi d’autres éléments ne plaidant pas en la faveur des ostéopathes (notamment sur le niveau des enseignements à la BSO). Ce projet n’atteint même pas le vote au parlement.</p>
+                <br>
+                <p>Ces éléments ainsi que diverses questions sur deux doctorats que JML dit avoir, finissent d’abimer sa réputation. 
+                    Pendant ce temps, les organisations professionnelles s’organisent pour petit à petit se regrouper afin de peser de tout leur poids dans l’avenir de la profession.
+                    En réalité, la profession est divisée en deux camps, ceux qui se réclame d’une tradition issue d’AT Still tandis que d’autres poussent en faveur d’une assimilation au sein du système médical.
+                    Cet échec pousse les ostéopathes anglais à se réformer, et la position de Littlejohn en tant que doyen, leur pose problème. Il s’en suit des conflits entre BOA et BSO. 
+                    En 1935, le General Concil and Register of Osteopaths (GosC) est fondée afin d’enregistrer l’ensemble des ostéopathes anglais. 
+                    En 1947, Littlejohn décède. Shilton Webster-Jones reprend la direction de la BSO.
+                </p>
+                <br>
+                <h2 class="font-bold">Quel est héritage de JML ?</h2>
+                <p>Littlejohn a participé avec ses frères à amener l’enseignement en ostéopathie à se tourner vers d’autres sciences que l’anatomie. Il a aussi été dans les premiers à mettre en avant l’aspect psychologique des choses. 
+                    Il était aussi probablement un bon enseignant mais il était un mauvais dirigeant d’école d’ostéopathie (le rapport de Flexner et la débâcle lors de l’ « Osteopath Bill » en témoigne), et il n’a pas été toujours un bon avocat de la profession et même parfois contribué à en retarder la reconnaissance involontairement. 
+                    À la différence d’AT Still, JML avait un bagage universitaire avec les codes d’écriture qui y sont liés. Ainsi, il est plus facile de trouver ses sources puisqu’il les cite.</p>
+                <br>
+                <p>Prenons certains de ses écrits, comme « Lectures on Psycho-Physiology » en 1899:
+                    Cet écrit a comme objectif d’être une synthèse sur la psychologie à destination des étudiants. Il cite notamment Kant, Herbart et leur point de vue sur la raison par exemple, mais aussi d’autres auteurs en donnant le nom de l’ouvrage et l’année.  
+                    Il est intéressant de voir que ce texte essaye de faire le lien entre une psychologie scientifique et les autres sciences comme l’anatomie et la physiologie. 
+                    La description de la fonction des nerfs qui y faite est bien plus scientifique que celle que l’on peut trouver dans les écrits de Still.
+                    Il tente de faire la part entre la perception et le stimulus d’entrée. Il s’éloigne en ça de cet vision très mécaniste d’Andrew Taylor Still. 
+                    C’est peut-être une des raisons du conflit entre Still et JML sur l’enseignement à l’ASO.  
+                    Il est possible de trouver d’autres écrits (Notes on the Principles of Osteopathy, Principles of Osteopathy, Theory and Practice of Osteopathy, par exemple), notamment dans les Year’s Book de l’Institute of Classical Osteopathy, publiés bien longtemps après le décès de JML (il faut rester prudent sur ces sources, dont la paternité n’est pas certaine).</p>
+                <br>
+                <h2 class="font-bold">Vidéos et Podcasts disponibles sur le sujet:</h2>
+                <br>
+                <div class="grid grid-cols-2 gap-2">
+                    <iframe width="280" height="157" src="https://www.youtube.com/embed/vY1-1pMtvOs?si=SLXlR8YcVnpQ5bhI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://creators.spotify.com/pod/show/table-talk5/embed/episodes/Ep-9---Professor-Martin-Collins-Osteopathy-In-Britain-e2hi73k/a-ab73mi8" height="157px" width="280px" frameborder="0" scrolling="no"></iframe>
+                    <h2 class="font-bold">Sources</h2>
+                </div>
+                <ul class="text-xs">
+                    <li>Berchtold,T.A.(1975). To Teach, to Heal, to Serve! The Story of the Chicago College of Osteopathic Medicine : the First 75 Years (1900-1975).États-Unis: Chicago College of Osteopathic Medicine.</li>
+                    <li>Collins, M. (2016). The British School of Osteopathy the First 100 Years. États-Unis: Xlibris UK.</li>
+                    <li>Haycock, W. (2000). Osteopathy: Principles & Practice. Royaume-Uni: Institute of Classical Osteopathy.</li>
+                    <li>Littlejohn,J.M. (1899). Lectures on Psycho-Physiology. (n.p.): Repressed Publishing LLC.</li>
+                    <li>O'Brien, J. C. (2017). J Martin Littlejohn (1865–1947) and James Buchan Littlejohn (1868–1947): Two distinct directions–Osteopathy and the birth of osteopathic medicine. International Journal of Osteopathic Medicine, 23, 4-10.</li>
+                    <li>O’Brien J, John Martin Littlejohn, an enigma of osteopathy, 1ère edition, 2016, Anshan edition.</li>
+                    <li>Raymond, R. (2014), An ocean away: The story of how osteopathy crossed the Atlantic,The DO (Article disponible <a href="https://thedo.osteopathic.org/2014/02/an-ocean-apart-the-story-of-how-osteopathy-crossed-the-atlantic/" target="_blank">ici</a>) </li>
+                </ul>
+                </div>
+                <div x-show="tab === 'Onglet5'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p><strong>Edythe F. Ashmore </strong> (1872-1953) est une ostéopathe diplômée du SS Still Collège of osteopathy de Des Moines en 1901. Elle exerce à Détroit tout en occupant la place de secrétaire et de trésorier du Tableau d’examen et d’enregistrement en ostéopathie du Michigan jusqu’en 1911.
+                        Elle partira alors pour continuer d’étudier à l’école de Los Angeles (la même école que celle de Louisa Burns) avant de poursuivre dans la recherche.
+                        Elle continuera dans l’enseignement et présentera à de nombreuses reprise des conférences (AOA lectures) à des groupes de professionnels mais aussi à l’association des ostéopathes américains sur de nombreux sujets : techniques, pathologies, mécanismes sous-jacents aux techniques …</p>
+                    <p>Elle continuera à prendre des responsabilités en devenant la 1ère vice-présidente de l’AOA en 1906 et 1911. Elle finira par quitter Los Angeles pour prendre la tête du département des techniques ostéopathiques à l’ASO à Kirksville, en 1914, où elle rencontrera AT Still (Ashmore, 1915). 
+                        Elle deviendra également l’éditrice du Journal of Osteopathy la même année et publiera un an plus tard son ouvrage Osteopathic Mechanics, considéré alors comme un ouvrage incontournable dans l’enseignement de la discipline. Elle ira suivre des cours au sein d'une école de chiropracteurs et sera très critique de leur pratique.</p>
+                    <br>
+                    <p>Son action pour défendre la profession ainsi que la mise en place de standard dans la pratique et la terminologie employé a grandement contribué à structurer la profession des ostéopathes aux USA. Elle témoignera dans certains procès contre des chiropracteurs pour exercice de l'ostéopathie sans licence (notamment le procès dans le wisconsin contre un chiropracteur d'origine japonaise Shegataro Morikubo)</p>
+                    <br>
+                    <h2 class="font-bold"> Sources</h2>
+                    <ul class="text-xs">
+                        <li>Ashmore, E. F. (1915). Osteopathic Mechanics: A Text-book. Journal Printing Company.</li>
+                        <li>Ashmore, E.F. “An Imitation and Its Lesson”. JAOA, January 1908, v.7, n.5:209-211.</li>
+                        <li>Ashmore, E.F. “The Menace of Chiropractic – Inside the History of this Fake”. The Osteopathic Physician, November 1907 v.12, n.5:1-2.</li>
+                        <li>Peters, R. E., & Chance, M. A. (2007). Disasters, discoveries, developments and distinction: the year that was 1907. Chiropractic Journal of Australia, 37(4), 145-156.</li>
+                        <li>Quinn, T. A. (2011). The feminine touch: Women in osteopathic medicine. Truman State University Press.</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet6'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p><strong>Paul Gény</strong> (1912-1996) est né en 1912 à Nancy. Il deviendra masseur à une époque où la profession de masseur kinésithérapeute n'existe pas encore (on peut voir dans son acte de mariage la profession de "masseur des hopitaux"). Il sera un des premiers directeur d'école de masseur-kinésithérapie après guerre. Il travaillera aussi avant-guerre avec le Dr Lavezzari. Il fondera l’Ecole Française d’Ostéopathie (EFO) à Paris en 1951 (mais certaines sources parle de 1957) et aussi la Société des Recherches Ostéopathiques la même année. Cette école sera à l’origine des premiers Masseurs Kinésithérapeutes Ostéopathe. Il faut comprendre que les cours d'ostéopathie ont commencé relativement tôt avant que l'école ne se structure réellement ce qui peut peut-être expliquer les différentes dates trouvées dans les témoignages des anciens diplômés. Au cours d’une forte période de répression contre les ostéopathes français, ce dernier transfera celle-ci à Londres dans les locaux de la BCNO en 1964… Elle deviendra l’ESO en 1970 d'abord à Londres puis à Maidstone. Il se retira de la direction de l'école en 1974.</p>
+                    <br>
+                    <p> On suppose que le premier projet de reconnaissance de l'ostéopathie à l'assemblée en 1956 aurait été fait à l'initiative de Paul Gény mais celui-ci sera renvoyé devant la commission de la Famille dont il ne sortira plus (voir dans la partie sur l'histoire de l'ostéopathie et de la thérapie manuelle en France).</p>
+                    <br>
+                    <h2 class="font-bold"> Videos et podcasts intéressants:</h2>
+                    <br>
+                    <div class="grid grid-cols-2">
+                        <iframe width="280" height="157" src="https://www.youtube.com/embed/usEBFpXpuVk?si=zcgna5EWggXC0HH4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0vzetk6rJdq1KUAOGnGcFG?utm_source=generator" width="280" height="157" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                    <br>
+                    <h2 class="font-bold">Sources</h2>
+                    <ul class="text-xs">
+                        <li>Bel, F. (2000). Bernard Barillon, paroles d'anciens. ApoStill, la revue de l'Académie d'Ostéopathie de France, (6), 57-63.</li>
+                        <li>Bel, F. (1999). Entretien avec Françis Peyralade. ApoStill, la revue de l'Académie d'Ostéopathie de France, (3), 10-20.</li>
+                        <li>Le Corre, F. (2009) . Le développement de l'ostéopathie en Europe. L'ostéopathie. ( p. 113 -121 ). Presses Universitaires de France. </li>
+                        <li>Le Dû, M. (2022). 2. L’ostéopathie, une pratique populaire. À corps, 63-77.</li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet7'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                <br>
+                <p>Une des figures les plus importantes du courant de la vertébrothérapie est <strong>André de Sambucy de Sorgues</strong> (1909-1987) Médecin, enseignant en gymnastique et ostéopathe. Il est à l’origine de l’école de Masso-kinésithérapie du CEERFF (Centre Européen d’Enseignement en Rééducation et Réadaptation Fonctionnelle) fondée en 1960 sous un autre nom (école de kinésithérapie du Dr Sambucy).
+                Il participera à la mise en place d’un service de vertébrothérapie à l’AP-HP.</p> 
+                <br>
+                <p>Il est aussi un des formateurs et maître à penser de Guy Trédaniel, futur créateur de l’étiopathie. De même, Il aura une influence certaine sur Giselle Soubiran, masseur-kinésithérapeute et pionnière de la profession des psychomotriciens. 
+                Il est auteur prolifique puisqu’on ne compte pas loin de 18 ouvrages consacrés à la médecine physique et à la thérapie manuelle.
+                Aujourd’hui la vertébrothérapie en tant que tel tombe un peu dans l’oubli comme le service en question a été fermé à l’AP-HP, et son école de kinésithérapie lui a survécu mais a changé de nom.
+                L’explication peut être trouvée dans la redondance avec d’autres secteurs médicaux (Rhumatologie, médecine physique rééducation réadaptation, etc…), mais aussi avec l’augmentation du champ de compétence des MKDE mais aussi la reconnaissance de l’ostéopathie ainsi que la diminution du nombre de médecin à exercice particulier. 
+                </p>
+                <br>
+                <h2 class="font-bold">Archive audio disponible sur le site de l'<a class="text-red-800" href="https://www.ina.fr/ina-eclaire-actu/audio/phf10005102/docteur-andre-de-sambucy-a-propos-de-la-vertebrotherapie" target="_blank">INA</a>, Interview du Dr De Sambucy:
+                    <video width="560" height="157" title="Archive Audio INA" controls="true" src="https://media-hub.ina.fr/video/dAvk4EPuX9V56Lt5evZcp4rxPNzznhkcTg0aAlWz4vooXWMtf3KSr1Bfc5614EZh1Oe+35HLgvNTNXpdyW8JhmZL25QyLiBcmN4ujV0OL4H07/W/+ESUJ4wrnkvWqe03/sl_iv/sQc4bD4G5mLh79AEfH502g==/sl_hm/zRlPBiJnZjiu0219fST/lR/LHcoZsVZEhaZgtmHNpFc0GA0aeW7/uFFj3h5ZpnTZJ0RqgHabX7graAv1kmsKOw==/sl_e/1743530611"></video></h2>
+                <br>
+                <h2 class="font-bold">Sources</h2>
+                <ul class="text-xs">
+                    <li>Brin, É. (2021). La profession de masseur-kinésithérapeute: évolutions et perspectives (Doctoral dissertation, Université Paris Cité).</li>
+                    <li>De Sambucy, A. (1968). Les Deux sources de la médecine européenne</li>
+                    <li>De Sambucy, M., de Sambucy-Novital, A., & Laubry, J. J. (1964). Pour comprendre le yoga et les lois brahmaniques. FeniXX.</li>
+                    <li>De Sambucy, A. (1959). Gymnastique corrective vertébrale.</li>
+                    <li>De Sambucy, D. A. (1957). Défendez vos vertèbres: contre le rhumatisme, les métiers debout, les chocs, la décalcification et les traitements brutaux.[Préface par le Dr Robert Pagès.]. Dangles.</li>
+                    <li>De Sambucy, D. A. (1957). Défendez vos vertèbres: contre le rhumatisme, les métiers debout, les chocs, la décalcification et les traitements brutaux.[Préface par le Dr Robert Pagès.]. Dangles.</li>
+                    <li>Giromini, F., & Monnier, M. O. (2018). Chapitre 1. Les origines d’un destin de 1916 à 1946. Psychomotricité, 1-6.</li>
+                </ul>
+                </div>
+                <div x-show="tab === 'Onglet8'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">8</div>
+                <div x-show="tab === 'Onglet9'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">9</div>
+                <div x-show="tab === 'Onglet10'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">10</div>
+                <div x-show="tab === 'Onglet11'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p> <strong>Irvin Korr</strong> (1909-2004) est un physiologiste qui a, tout comme Louisa Burns, contribué à la notion de dysfonction somatique et de segment facilité lors de cette dernière. Celui-ci obtenu son doctorat à Princeton en 1935 avant de prendre un poste à New-York University School of Medecine dans le département de physiologie en 1936. Il a d’abord étudié la physiologie cellulaire avant d’enseignement la physiologie humaine en faculté.
+                        Il travaillera brièvement pendant la seconde guerre mondiale à la préparation physiologique des aviateurs de l’armée à piloter en haute altitude. Ce n’est qu’à la fin de 1945 qu’il ira travailler au Kirksville College of Osteopathy and Surgery.</p>
+                    <br>
+                    <p>
+                        En 1947, il publiera dans l’American Journal of Physiology le premier article sur le sujet : « Quantitative studies of chronic facilitation in human motoneuron pools ». Un second article suivra la même année dans le JAOA : « The neural Basis of the Osteopathic Lesions ». Il finira par quitter Kirksville en 1975 pour le Michigan State University College of Osteopathic Medicine où il travaillera à améliorer les standards des connaissances et de l’enseignement dans le cursus des études en ostéopathie.
+                    </p>
+                    <br>
+                    <p>Il adressera enfin sa réflexion et ses questions sur l’ostéopathie dans un article de 1991 : « Osteopathic research : The needed paradigm shift ».
+                        Il est connu également pour son ouvrage « Bases physiologiques de l’ostéopathie », un ouvrage qui pose les bases de la « dysfonction somatique » ou « lésion ostéopathique ». Il dirigera la compilation d’un compte rendu d’un congrès sur les avancées de la recherche en Thérapie Manuelle, The neurobiologic Mechanisms in Manipulative Therapy en 1977.</p>
+                    <br>
+                    <h2>Interview d'Irvin Korr (disponible sur de la <a class="text-red-800" href="https://unthsc-ir.tdl.org/items/0bb5fa63-855f-409e-916a-67f9f184feac" target="_blank">"TCOM and UNTHSC Oral History Collection"</a>)</h2>
+                    <br>
+                    <video _ngcontent-dspace-angular-c423="" crossorigin="anonymous" id="singleVideo" preload="none" controls="" src="https://unthsc-ir.tdl.org/server/api/core/bitstreams/357d635c-7a0f-4356-b41c-ed4170aa16b6/content" poster="https://unthsc-ir.tdl.org/server/api/core/bitstreams/bec032d6-ea80-40c8-a37a-7ea12db94ea1/content"></video>
+                    <br>
+                    <h2 class="font-bold">Sources</h2>
+                    <ul class="text-xs">
+                        <li>Korr, I. M., Abehsera, A., & Burty, F. (1993). Base physiologique de l'ostéopathie. Frison-Roche.</li>
+                        <li>Korr, I. M., Osteopathic research: the needed paradigm shift, JAOA, 1991, 91(2): 156-171.</li>
+                        <li>Korr, I. M., Stokes R, Korr’s Interview for Oral history Section of TCOM, 1988 </li>
+                        <li>Korr, I. M., The neural basis of the osteopathic lesion, JAOA, 1947, 47(4)191-198.</li>
+                        <li>Korr, I. M., Research Workshop on Neurobiological Mechanisms in Manipulative Therapy, Plenum Press: NewYork, 1978, 466p</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet12'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">
+                    <h2 class="font-bold">Son parcours</h2>
+                    <br>
+                    <p><strong>Robert Maigne</strong> (1923-2012) est une importante figure de la branche française de l'ostéopathie et de la thérapie manuelle. Il semble que ce dernier avait un intérêt pour la thérapie manuelle de longue date.
+                        Il pratiquait déjà des manoeuvres sur ces patients pour des douleurs musculosquelettiques lors de ses consultations avant de se former en 1951 à la British School of Osteopathy.
+                        Il s'installe comme rhumatologue-ostéopathe à Paris en 1952.</p>
+                    <br>
+                    <p>Il a de sérieux doutes sur les modèles sous-jacents qu'il avait appris. Il décida donc de mettre au point son propre modèle explicatif: Le dérangement douloureux intervertébral mineur (DDIM). On lui doit également le syndrome Cellulo- Teno- Periosto-myalgique (SCTM).
+                        Il travailla sur le rôle de la reproduction de la douleur dans le raisonnement clinique et sur les sources possibles de la douleur (rôle des articulaires postérieurs, rôle des rameaux dorsaux du nerf rachidien) 
+                        Il produira de nombreux ouvrages et articles sur le sujet. Beaucoup de sources insiste sur la place importante donnée à l'examen clinique dans sa vision de la pratique.</p>
+                    <br>
+                    <p>Il est aussi à l'origine de la mise en place d'un diplôme universitaire à l'Hôtel-Dieu en 1969. Par la suite, 12 autres facultés rejoidront le mouvement. Il occupera la place de chef du service rééducation de l'hôpital Saint Maurice, et du service de médecine orthopédique et de rééducation de l'hotel Dieu.
+                        Enfin, il sera aussi le président de plusieurs sociétés savantes et professionnelles: président de la Société française de médecine physique, Président de la Fédération internationale de médecine manuelle (FIMM) et la Société française de médecine manuelle orthopédique et ostéopathique (SOFMMOO) dont il a 
+                        été le co-fondateur.
+                    </p>
+                    <br>
+                    <p>Enfin, le syndrome de la charnière thoraco-lombaire porte son nom (le syndrome de maigne). Il faut noter également la croix de Maigne, outil diagnostique pour noter les éléments importants lors des mouvements actifs.</p>
+                    <br>
+                    <p>En conclusion, si le Dr Lavezarri a introduit la discipline au niveau médicale, c'est Robert Maigne qui l'a développée et l'a remaniée.</p>
+                    <br>
+                    <h2 class="font-bold">Vidéo et Podcast sur le sujet:</h2>
+                    <iframe width="280" height="157" src="https://www.youtube.com/embed/M91P76BVuCc?si=yE0XNSeRU7clX7Cd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br>
+                    <h2 class="font-bold">Sources</h2>
+                    <ul class="text-xs">
+                        <li>Bogduk, N., Guierre, A., & Maigne, R. (2005). Anatomie clinique du rachis lombal et sacré (Vol. 13). Elsevier.</li>
+                        <li>Goussard, J. C. (2013). In memoriam Robert Maigne (1923–2012).</li>
+                        <li>Hamonet, C. (2013). Robert Maigne, le diagnostic au bout des doigts. Journal de Réadaptation Médicale: Pratique et Formation En Médecine Physique et de Réadaptation, 33(3), 67.</li>
+                        <li>Maigne, J. Y. (2013). Robert Maigne 1923–2012. Revue du rhumatisme, 80(1), 1-2.</li>
+                        <li>Maigne, R. (2011). Cervicogenic headache.</li>
+                        <li>Maigne, R. (2007). Douleurs d’épaule et rachis cervical. Revue de médecine manuelle-ostéopathie, (22), 26-27.</li>
+                        <li>Maigne, R. (2006). Douleurs d'Origine Vertebrale.</li>
+                        <li>Maigne, R. (2006). Dérangement douloureux intervertébral mineur (DDIM). Douleurs d’origine vertébrale comprendre, diagnostiquer et traiter. ELSEVIER MASSON, 119-30.</li>
+                        <li>Maigne, R., & Nieves, W. L. (2005). Diagnosis and treatment of pain of vertebral origin. CRC Press.</li>
+                        <li>Maigne, R. (2004). Quelles sciatiques peut-on manipuler et quand?. Revue de médecine vertébrale, (14), 6-11.</li>
+                        <li>Maigne, R. (1995). Thoracolumbar junction syndrome a source of diagnostic error. Journal of Orthopaedic Medicine, 17(3), 84-89.</li>
+                        <li>Maigne, J. Y., & Maigne, R. (1991). Trigger point of the posterior iliac crest: painful iliolumbar ligament insertion or cutaneous dorsal ramus pain? An anatomic study. Archives of physical medicine and rehabilitation, 72(10), 734-737.</li>
+                        <li>Maigne, R. (1990). ANATOMIC CONSIDERATIONS. Back Pain: An International Review, 96.</li>
+                        <li>Maigne, R. (1980). Mal de dos, mal du siècle. FeniXX.</li>
+                        <li>Maigne, R., & Liberson, W. T. (1973). Orthopedic Medicine. American Journal of Physical Medicine & Rehabilitation, 52(2), 94.</li>
+                        <li>Maigne, R. (1970). Douleurs d'origine vertébrale et traitements par manipulations. American Journal of Physical Medicine & Rehabilitation, 49(4), 259.</li>
+                        <li>Maigne, R. (1965). The concept of painlessness and opposite motion in spinal manipulations. American Journal of Physical Medicine & Rehabilitation, 44(2), 55-69.</li>
+                        <li>Maigne, R. (1961). Les manipulations vertébrales. British Medical Journal, 1(5228), 830.</li>
+                        <li>Meloche, J. P., Bergeron, Y., Bellavance, A., Morand, M., Huot, J., & Belzile, G. (1993). Painful intervertebral dysfunction: Robert Maigne's original contribution to headache of cervical origin. Headache: The Journal of Head and Face Pain, 33(6), 328-334.</li>
+                    </ul>
+                </div>
+                <div x-show="tab === 'Onglet13'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">13</div>
+                <div x-show="tab === 'Onglet14'" style="display:none;" class=" rounded-3xl p-2 border-orange-500 border-2 m-2 h-[500px] overflow-y-auto">14</div>
+
+            </div>
+        </div>
+
+        <script defer src="carousel.js"></script>
+    </body>
+        <footer class="p-2">
+        <div class="p-1 col-span-4 row-span- bg-gradient-to-b from-yellow-400 to-red-600 rounded-3xl flex flex-row justify-evenly items-center sm:bg-gradient-to-r from-yellow-400 to-red-600">
+            <div>
+                <img class="h-24 transition-all duration-200 rounded-xl justify-center cursor-pointer hover:sepia gap-4" src="asset/podcast_CO.png">
+
+            </div>
+            <div class="text-white">
+                <ul>
+                    <li>Mentions Légales</li>
+                    <li>Nous contacter</li>
+                    <li>Conditions d'utilisation du site</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
